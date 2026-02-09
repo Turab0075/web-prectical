@@ -1,0 +1,124 @@
+<html>
+<head>
+<title>Welcome - Online Mobile Store</title>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+<style>
+body {
+  background: linear-gradient(rgba(77,26,71,0.85), rgba(77,26,71,0.85)), 
+  url('https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=1500&q=80')
+  no-repeat center center fixed;
+  background-size: cover;
+  color: white;
+}
+
+.card {
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+}
+
+.card img {
+  height: 370px;
+  object-fit: cover;
+}
+
+.welcome-text {
+  text-align: center;
+  padding: 10px;
+}
+</style>
+
+<script>
+function showUser(){
+    let user = localStorage.getItem("username");
+    if(user)
+        document.getElementById("userDisplay").innerHTML =
+            "Hello, " + user;
+}
+
+function searchProduct(){
+    let key = document.getElementById("searchBox").value.toLowerCase();
+    let cards = document.getElementsByClassName("product");
+
+    for(let i=0;i<cards.length;i++){
+        let name = cards[i].dataset.name.toLowerCase();
+        cards[i].style.display = name.includes(key) ? "block" : "none";
+    }
+}
+
+function buyProduct(name){
+    alert(name + " added to cart (demo)");
+}
+</script>
+
+</head>
+
+<body onload="showUser()">
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<div class="container-fluid">
+<a class="navbar-brand" href="#">Online Mobile Store</a>
+
+<ul class="nav">
+<li class="nav-item"><a class="nav-link" href="Indexweb2.html">Register</a></li>
+<li class="nav-item"><a class="nav-link" href="loginweb2.html">Login</a></li>
+<li class="nav-item"><a class="nav-link" href="about11.html">About Us</a></li>
+</ul>
+</div>
+</nav>
+
+<div class="welcome-text">
+<h1>Welcome to Online Mobile Store</h1>
+<p id="userDisplay"></p>
+<p>Best deals on latest smartphones – Explore Now!</p>
+
+<input type="text" id="searchBox" placeholder="Search Mobile"
+onkeyup="searchProduct()" class="form-control w-50 mx-auto">
+</div>
+
+<div class="container my-5">
+<div class="row g-4">
+
+<div class="col-md-4 product" data-name="iphone">
+<div class="card">
+<img src="https://m.media-amazon.com/images/I/81dblfYZOYL._SL1500_.jpg">
+<div class="card-body text-dark">
+<h5>iPhone 14 Pro</h5>
+<p>Premium performance with A16 chip.</p>
+<button class="btn btn-primary"
+onclick="buyProduct('iPhone 14 Pro')">Buy Now</button>
+</div>
+</div>
+</div>
+
+<div class="col-md-4 product" data-name="samsung">
+<div class="card">
+<img src="https://m.media-amazon.com/images/I/71geVdy6-OS._SL1500_.jpg">
+<div class="card-body text-dark">
+<h5>Samsung Galaxy S23</h5>
+<p>Next-gen power display.</p>
+<button class="btn btn-primary"
+onclick="buyProduct('Samsung Galaxy S23')">Buy Now</button>
+</div>
+</div>
+</div>
+
+<div class="col-md-4 product" data-name="oneplus">
+<div class="card">
+<img src="https://m.media-amazon.com/images/I/71AvQd3VzqL._SL1500_.jpg">
+<div class="card-body text-dark">
+<h5>OnePlus 11</h5>
+<p>Smooth OxygenOS performance.</p>
+<button class="btn btn-primary"
+onclick="buyProduct('OnePlus 11')">Buy Now</button>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+</body>
+</html>

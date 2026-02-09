@@ -1,0 +1,129 @@
+<html>
+<head>
+<title>Contact Us - Online Mobile Store</title>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+<style>
+body {
+  background: linear-gradient(rgba(77,26,71,0.85), rgba(77,26,71,0.85)), 
+  url('https://images.unsplash.com/photo-1581091012184-5c1e4e06f3c4?auto=format&fit=crop&w=1500&q=80')
+  no-repeat center center fixed;
+  background-size: cover;
+  color: white;
+}
+
+.contact-section {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.contact-card {
+  background: white;
+  color: black;
+  border-radius: 15px;
+  padding: 30px;
+  max-width: 600px;
+  margin: auto;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+}
+</style>
+
+<script>
+function showUser(){
+    let user = localStorage.getItem("username");
+    if(user)
+        document.getElementById("userDisplay").innerHTML =
+            "Logged in as: " + user;
+}
+
+function sendMessage(){
+    let name = document.getElementById("name").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let msg = document.getElementById("message").value.trim();
+
+    if(name=="" || email=="" || msg==""){
+        alert("Please fill all fields");
+        return false;
+    }
+
+    let messages = JSON.parse(localStorage.getItem("messages")) || [];
+
+    messages.push({
+        name:name,
+        email:email,
+        message:msg
+    });
+
+    localStorage.setItem("messages", JSON.stringify(messages));
+
+    alert("Message Sent Successfully!");
+    return false;
+}
+</script>
+
+</head>
+
+<body onload="showUser()">
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<div class="container-fluid">
+<a class="navbar-brand" href="welcomeweb2.html">
+Online Mobile Store
+</a>
+
+<ul class="nav">
+<li class="nav-item"><a class="nav-link" href="welcomeweb2.html">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="about11.html">About Us</a></li>
+<li class="nav-item"><a class="nav-link" href="contactweb2.html">Contact Us</a></li>
+<li class="nav-item"><a class="nav-link" href="loginweb2.html">Login</a></li>
+</ul>
+</div>
+</nav>
+
+<div class="container contact-section">
+
+<h1>Contact Us</h1>
+<p id="userDisplay"></p>
+
+<p>Fill the form below to contact us.</p>
+
+<div class="contact-card">
+
+<form onsubmit="return sendMessage()">
+
+<div class="mb-3">
+<label>Full Name</label>
+<input type="text" id="name" class="form-control">
+</div>
+
+<div class="mb-3">
+<label>Email Address</label>
+<input type="email" id="email" class="form-control">
+</div>
+
+<div class="mb-3">
+<label>Message</label>
+<textarea id="message" class="form-control" rows="4"></textarea>
+</div>
+
+<button type="submit" class="btn btn-dark w-100">
+Send Message
+</button>
+
+</form>
+
+<hr>
+
+<h5>Our Contact Info</h5>
+<p>
+📍 Surat, Gujarat, India <br>
+📞 +91 98765 43210 <br>
+✉ support@onlinemobilestore.com
+</p>
+
+</div>
+</div>
+
+</body>
+</html>

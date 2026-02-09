@@ -1,0 +1,68 @@
+<html>
+<head>
+  <title>Login - Online Banking System</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <script>
+    function validateLogin() {
+      let user = document.getElementById("user").value;
+      let pass = document.getElementById("pass").value;
+
+      if (user === "" || pass === "") {
+        alert("Please enter Username and Password");
+        return false;
+      }
+      localStorage.setItem("username", user);
+      window.location.href = "welcomeweb2.html";
+      return false;
+    }
+  </script>
+	<style>
+  .form-box { 
+    max-width: 500px; 
+    background: #bb1784;
+    border: 1px solid #ef0909; 
+    border-radius: 10px; 
+    padding: 20px; 
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+    </style>
+</head>
+<body>
+  <style>
+    body {
+      background: linear-gradient(rgba(77,26,71,0.85), rgba(77,26,71,0.85)), url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1500&q=80') no-repeat center center fixed;
+      background-size: cover;
+    }
+  </style>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Online mobile store</a>
+      <ul class="nav">
+        <li class="nav-item"><a class="nav-link" href="Indexweb2.html">Register</a></li>
+        <li class="nav-item"><a class="nav-link" href="loginweb2.html">Login</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div style="width: 100%; text-align: center; position: absolute; top: 40%; left: 50%; transform: translate(-50%, -200%); z-index: 2;">
+    <h2 style= "color: aliceblue;font-family: Arial, Helvetica, sans-serif;">CUSTOMER LOGIN</h2>
+  </div>
+  <form onsubmit="return validateLogin()" class="container form-box" >
+    <label>Username:</label>
+    <input type="text" id="user" class="form-control">
+
+    <label>Password:</label>
+    <input type="password" id="pass" class="form-control"><br>
+
+  <button type="submit" class="btn" style="background-color: #3e0e3d; color: white;">Login</button>
+  </form>
+</body>
+</html>
